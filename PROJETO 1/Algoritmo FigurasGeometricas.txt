@@ -1,0 +1,112 @@
+Algoritmo FigurasGeometricas
+
+Classe Ponto:
+    Atributos:
+        - x: real
+        - y: real
+    
+    Método construtor(x, y):
+        Inicializa x e y com os valores fornecidos
+    
+Fim Classe Ponto
+
+Classe Reta:
+    Atributos:
+        - pontoInicial: Ponto
+        - pontoFinal: Ponto
+    
+    Método construtor(pontoInicial, pontoFinal):
+        Inicializa os pontos inicial e final
+    
+Fim Classe Reta
+
+Classe Circulo:
+    Atributos:
+        - centro: Ponto
+        - raio: Reta
+    
+    Método construtor(centro, raio):
+        Inicializa o centro e a reta raio com os valores fornecidos
+    
+    Método calcularArea():
+        Retorna a área do círculo utilizando a fórmula A = π * raio^2
+    
+    Método calcularPerimetro():
+        Retorna o perímetro do círculo utilizando a fórmula P = 2 * π * raio
+
+Fim Classe Circulo
+
+Classe Retangulo:
+    Atributos:
+        - pontoSuperiorEsquerdo: Ponto
+        - pontoInferiorDireito: Ponto
+    
+    Método construtor(pontoSuperiorEsquerdo, pontoInferiorDireito):
+        Inicializa os pontos superior esquerdo e inferior direito
+    
+    Método calcularArea():
+        Calcula e retorna a área do retângulo
+    
+    Método calcularPerimetro():
+        Calcula e retorna o perímetro do retângulo
+
+Fim Classe Retangulo
+
+Função CalcularAreaCirculo(c: Circulo): real
+    // Calcular a área do círculo usando a fórmula A = π * raio^2
+    Defina raio como c.raio.pontoInicial.distanciaAte(c.raio.pontoFinal)
+    Retorne 3.1416 * raio * raio
+Fim Função CalcularAreaCirculo
+
+Função CalcularPerimetroCirculo(c: Circulo): real
+    Retorne 2 * 3.1416 * c.raio.pontoInicial.distanciaAte(c.raio.pontoFinal)
+Fim Função CalcularPerimetroCirculo
+
+Função CalcularAreaRetangulo(r: Retangulo): real
+    Retorne (r.pontoInferiorDireito.x - r.pontoSuperiorEsquerdo.x) * (r.pontoSuperiorEsquerdo.y - r.pontoInferiorDireito.y)
+Fim Função CalcularAreaRetangulo
+
+Função CalcularPerimetroRetangulo(r: Retangulo): real
+    Retorne 2 * ((r.pontoInferiorDireito.x - r.pontoSuperiorEsquerdo.x) + (r.pontoSuperiorEsquerdo.y - r.pontoInferiorDireito.y))
+Fim Função CalcularPerimetroRetangulo
+
+Início
+    // Exemplo de uso
+    Defina centroCirculo como Ponto
+    centroCirculo.x <- 0
+    centroCirculo.y <- 0
+
+    Defina pontoInicialReta como Ponto
+    pontoInicialReta.x <- 0
+    pontoInicialReta.y <- 0
+
+    Defina pontoFinalReta como Ponto
+    pontoFinalReta.x <- 5
+    pontoFinalReta.y <- 0
+
+    Defina retaRaio como Reta
+    retaRaio.pontoInicial <- pontoInicialReta
+    retaRaio.pontoFinal <- pontoFinalReta
+
+    Defina circulo como Circulo
+    circulo.centro <- centroCirculo
+    circulo.raio <- retaRaio
+
+    Escreva "Área do círculo: ", CalcularAreaCirculo(circulo)
+    Escreva "Perímetro do círculo: ", CalcularPerimetroCirculo(circulo)
+
+    Defina pontoSuperiorEsquerdoRetangulo como Ponto
+    pontoSuperiorEsquerdoRetangulo.x <- -5
+    pontoSuperiorEsquerdoRetangulo.y <- 5
+
+    Defina pontoInferiorDireitoRetangulo como Ponto
+    pontoInferiorDireitoRetangulo.x <- 5
+    pontoInferiorDireitoRetangulo.y <- -5
+
+    Defina retangulo como Retangulo
+    retangulo.pontoSuperiorEsquerdo <- pontoSuperiorEsquerdoRetangulo
+    retangulo.pontoInferiorDireito <- pontoInferiorDireitoRetangulo
+
+    Escreva "Área do retângulo: ", CalcularAreaRetangulo(retangulo)
+    Escreva "Perímetro do retângulo: ", CalcularPerimetroRetangulo(retangulo)
+Fim
